@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:task-contract:0.1.0",
+  "title": "Visible Task Contract",
+  "type": "object",
+  "required": ["protocol_version", "contract_id", "task_id", "goal", "available_information", "allowed_interaction", "terminal_form", "completion_semantics", "prohibited_actions"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "contract_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "goal": {"type": "string", "minLength": 1},
+    "available_information": {"type": "array", "items": {"type": "string"}},
+    "allowed_interaction": {"type": "array", "items": {"type": "string"}},
+    "terminal_form": {"type": "object"},
+    "completion_semantics": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "prohibited_actions": {"type": "array", "items": {"type": "string"}},
+    "safety_limitations": {"type": "array", "items": {"type": "string"}},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

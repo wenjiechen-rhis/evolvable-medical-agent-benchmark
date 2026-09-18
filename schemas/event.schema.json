@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:event:0.1.0",
+  "title": "External Event Record",
+  "type": "object",
+  "required": ["protocol_version", "run_id", "task_id", "event_index", "timestamp", "actor_type", "event_type"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "run_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "event_index": {"type": "integer", "minimum": 0},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "actor_type": {"enum": ["participant_system", "environment", "infrastructure_operator", "human_after_handoff"]},
+    "event_type": {"enum": ["observation_available", "model_call", "tool_request", "tool_response", "mutation_attempted", "mutation_acknowledged", "confirmation_attempted", "confirmation_observed", "terminal_proposed", "task_stopped", "handoff_emitted", "infrastructure_event"]},
+    "tool": {"type": ["string", "null"]},
+    "operation": {"type": ["string", "null"]},
+    "logical_action_id": {"type": ["string", "null"]},
+    "request_digest": {"type": ["string", "null"]},
+    "response_digest": {"type": ["string", "null"]},
+    "ack_status": {"enum": ["accepted", "rejected", "unknown", "not_applicable"]},
+    "confirmation_status": {"enum": ["verified", "contradicted", "unavailable", "unknown", "not_applicable"]},
+    "open_obligations": {"type": "array", "items": {"type": "string"}},
+    "usage": {
+      "type": "object",
+      "properties": {
+        "model_calls": {"type": "integer", "minimum": 0},
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "elapsed_seconds": {"type": "number", "minimum": 0},
+        "provider_failures": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "payload_ref": {"type": ["string", "null"]},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

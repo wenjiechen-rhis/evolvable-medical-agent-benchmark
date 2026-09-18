@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:terminal-output:0.1.0",
+  "title": "Terminal Output Record",
+  "type": "object",
+  "required": ["protocol_version", "run_id", "task_id", "terminal_type", "output", "open_obligations", "state_confirmation_status", "partial_mutation", "timestamp"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "run_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "terminal_type": {"enum": ["complete", "hold", "deny", "limit", "error", "handoff"]},
+    "output": {},
+    "open_obligations": {"type": "array", "items": {"type": "string"}},
+    "state_confirmation_status": {"enum": ["verified", "contradicted", "unavailable", "unknown", "not_applicable"]},
+    "partial_mutation": {"type": "boolean"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

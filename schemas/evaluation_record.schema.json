@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:evaluation-record:0.1.0",
+  "title": "Isolated Evaluation Record",
+  "type": "object",
+  "required": ["protocol_version", "run_id", "task_id", "execution_receipt_sha256", "evaluator_id", "evaluator_version", "official_label", "evaluated_at"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "run_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "execution_receipt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evaluator_id": {"type": "string"},
+    "evaluator_version": {"type": "string"},
+    "official_label": {"enum": ["correct", "incorrect", "unknown", "excluded", "contract_disputed"]},
+    "exclusion_reason": {"type": ["string", "null"]},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "signature": {"type": ["string", "null"]},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:tool-contract:0.1.0",
+  "title": "Visible Tool Contract",
+  "type": "object",
+  "required": ["protocol_version", "contract_id", "operations", "pagination", "error_semantics", "confirmation_capabilities"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "contract_id": {"type": "string"},
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "kind", "input", "output", "effects", "idempotency"],
+        "properties": {
+          "name": {"type": "string"},
+          "kind": {"enum": ["read", "write", "mixed"]},
+          "input": {"type": "object"},
+          "output": {"type": "object"},
+          "effects": {"type": "string"},
+          "idempotency": {"enum": ["guaranteed", "keyed", "not_guaranteed", "unknown"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "pagination": {"type": "object"},
+    "error_semantics": {"type": "object"},
+    "confirmation_capabilities": {"type": "object"},
+    "atomicity_capabilities": {"type": "object"},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

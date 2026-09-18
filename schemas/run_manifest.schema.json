@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:run-manifest:0.1.0",
+  "title": "Formal Run Manifest",
+  "type": "object",
+  "required": ["protocol_version", "run_id", "version_id", "run_class", "track", "benchmark_version", "environment", "eligible_task_ids", "started_at", "autonomy_declaration", "limits"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "run_id": {"type": "string", "minLength": 1},
+    "version_id": {"type": "string", "minLength": 1},
+    "run_class": {"enum": ["first_pass", "scoped_recovery", "full_rerun", "reliability_rerun", "assisted_continuation", "scorer_recovery"]},
+    "track": {"enum": ["clean", "exposed", "assisted"]},
+    "benchmark_version": {"type": "string", "minLength": 1},
+    "environment": {
+      "type": "object",
+      "required": ["dataset", "interface", "service", "image_digest"],
+      "properties": {
+        "dataset": {"type": "string"},
+        "interface": {"type": "string"},
+        "service": {"type": "string"},
+        "image_digest": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "eligible_task_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "started_at": {"type": "string", "format": "date-time"},
+    "ended_at": {"type": ["string", "null"], "format": "date-time"},
+    "autonomy_declaration": {
+      "type": "object",
+      "required": ["task_specific_human_input_allowed", "infrastructure_intervention_policy", "handoff_policy"],
+      "properties": {
+        "task_specific_human_input_allowed": {"const": false},
+        "infrastructure_intervention_policy": {"type": "string"},
+        "handoff_policy": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "required": ["max_events_per_task", "max_elapsed_seconds_per_task"],
+      "properties": {
+        "max_events_per_task": {"type": "integer", "minimum": 1},
+        "max_elapsed_seconds_per_task": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "seed": {"type": ["integer", "null"]},
+    "extensions": {"type": "object"}
+  },
+  "additionalProperties": false
+}

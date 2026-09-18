@@ -1,0 +1,27 @@
+{
+  "protocol_version": "0.1.0",
+  "run_id": "fixture-run-001",
+  "version_id": "0.0.1",
+  "run_class": "first_pass",
+  "track": "clean",
+  "benchmark_version": "mechanical-conformance-0.1.0",
+  "environment": {
+    "dataset": "single harmless fixture",
+    "interface": "mock-interface-0.1.0",
+    "service": "local-mock",
+    "image_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "eligible_task_ids": ["fixture-001"],
+  "started_at": "2026-09-18T00:01:00Z",
+  "ended_at": "2026-09-18T00:01:02Z",
+  "autonomy_declaration": {
+    "task_specific_human_input_allowed": false,
+    "infrastructure_intervention_policy": "Stop and record an infrastructure event; do not alter task content.",
+    "handoff_policy": "Emit a handoff event and stop autonomous execution."
+  },
+  "limits": {
+    "max_events_per_task": 20,
+    "max_elapsed_seconds_per_task": 30
+  },
+  "seed": 1
+}

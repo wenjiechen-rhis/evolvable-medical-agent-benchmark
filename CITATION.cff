@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this protocol toolkit, please cite the working paper."
+title: "Evolvable Medical Agent Benchmark Protocol"
+type: software
+version: 0.1.0
+date-released: 2026-09-18
+authors:
+  - family-names: Chen
+    given-names: Wenjie
+preferred-citation:
+  type: article
+  title: "Benchmarking Evolvable Medical Agents Beyond First Pass"
+  subtitle: "An Architecture Neutral Protocol for Autonomous Execution Sealed Evaluation and Versioned Improvement"
+  authors:
+    - family-names: Chen
+      given-names: Wenjie
+  year: 2026
+  publisher: SSRN Working Paper

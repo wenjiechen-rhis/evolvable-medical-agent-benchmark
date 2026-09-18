@@ -1,0 +1,25 @@
+{
+  "protocol_version": "0.1.0",
+  "participant_id": "example-participant",
+  "system_id": "mechanical-interface-fixture",
+  "version_id": "0.0.1",
+  "parent_version_id": null,
+  "models": [
+    {
+      "provider": "example-provider",
+      "model": "example-model",
+      "version": "fixture-only"
+    }
+  ],
+  "system_boundary": "Fixture process plus the declared mock status tool. This is not a substantive task-solving agent.",
+  "tool_privileges": ["mock.get_status"],
+  "persistent_memory": false,
+  "configuration_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "change_declaration": {
+    "evidence_used": [],
+    "components_changed": [],
+    "intended_failure_classes": [],
+    "regression_scope": ["fixture-001"]
+  },
+  "created_at": "2026-09-18T00:00:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:emab:schema:derivability-attestation:0.1.0",
+  "title": "Contract Derivability Coverage Attestation",
+  "type": "object",
+  "required": ["protocol_version", "benchmark_version", "evaluator_version", "reviewer_id", "reviewed_at", "predicate_count", "mapped_predicate_count", "unmapped_predicate_count", "status"],
+  "properties": {
+    "protocol_version": {"const": "0.1.0"},
+    "benchmark_version": {"type": "string"},
+    "evaluator_version": {"type": "string"},
+    "reviewer_id": {"type": "string"},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "predicate_count": {"type": "integer", "minimum": 0},
+    "mapped_predicate_count": {"type": "integer", "minimum": 0},
+    "unmapped_predicate_count": {"type": "integer", "minimum": 0},
+    "obligation_classes": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["pass", "fail", "conditional"]},
+    "signature": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

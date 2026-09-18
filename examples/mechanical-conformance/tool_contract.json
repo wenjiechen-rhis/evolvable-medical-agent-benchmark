@@ -1,0 +1,19 @@
+{
+  "protocol_version": "0.1.0",
+  "contract_id": "fixture-tool-contract-0.1.0",
+  "operations": [
+    {
+      "name": "mock.get_status",
+      "kind": "read",
+      "input": {},
+      "output": {"status": "string"},
+      "effects": "No state change.",
+      "idempotency": "guaranteed"
+    }
+  ],
+  "pagination": {"supported": false},
+  "error_semantics": {"unavailable": "Returns a structured unavailable error."},
+  "confirmation_capabilities": {"read_after_write": false, "reason": "The fixture has no write operation."},
+  "atomicity_capabilities": {"group_write": false},
+  "extensions": {}
+}
